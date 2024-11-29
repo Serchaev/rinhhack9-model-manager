@@ -1,0 +1,10 @@
+.git
+.dockerignore
+.gitignore
+.gitattributes
+.isort.cfg
+Makefile
+Dockerfile
+README.md
+docs
+tests
