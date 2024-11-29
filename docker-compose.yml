@@ -1,0 +1,6 @@
+version: "3"
+services:
+  service_template:
+    build: .
+    ports:
+      - "5004:5000"
