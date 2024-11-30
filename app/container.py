@@ -4,6 +4,7 @@ from app.helpers.redis import RedisStreamAmqp, RedisQueueAmqp
 from redis.asyncio.client import Redis
 
 from app.config import settings
+from app.workers.model_client import ModelClient
 
 
 class Container:
@@ -33,4 +34,8 @@ class Container:
         pool_size=settings.POSTGRES.pool_min_size,
         max_overflow=settings.POSTGRES.pool_max_size,
         pool_timeout=settings.POSTGRES.pool_timeout,
+    )
+    model_client = providers.Singleton(
+        ModelClient,
+        redis=redis(),
     )

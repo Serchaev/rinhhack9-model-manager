@@ -2,12 +2,16 @@ dynaconf_merge: true
 default:
   NAME: service_model_manager
   HOST: 0.0.0.0
-  PORT: 5000
+  PORT: 8000
   ENDPOINT: api
   WORKERS: 4
   FAST_API_PATH: app.application:app
   LOG_LEVEL: info
   RELOADED: True
+  LOGGER:
+    level: INFO
+    dir_path: .usr/src/logs
+    format: "%(asctime)s - %(levelname)s - %(name)s - %(filename)s - %(funcName)s - %(lineno)d - %(message)s"
   CORS:
     allow_origins: ['*']
     allow_methods: '*'
@@ -17,12 +21,13 @@ default:
     max_age: 3600
   AMQP:
     routing_keys:
-      backend_routing_key: model_manager_routing_key
+      model_manager_routing_key: model_manager_routing_key
+      backend_routing_key: backend_routing_key
   REDIS:
     host: 192.168.0.123
     port: 6379
     login:
-    password: 12345678
+    password:
     database: 0
   POSTGRES:
     dialect: asyncpg

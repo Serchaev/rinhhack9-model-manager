@@ -30,6 +30,9 @@ pydantic-core = "^2.20.1"
 annotated-types = "^0.7.0"
 requests = "^2.32.3"
 httpx-oauth = "^0.15.1"
+pandas = "^2.2.3"
+joblib = "^1.4.2"
+scikit-learn = "^1.5.2"
 
 
 [tool.poetry.group.dev.dependencies]
