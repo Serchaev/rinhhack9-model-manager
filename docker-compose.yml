@@ -3,4 +3,4 @@ services:
   service_template:
     build: .
     ports:
-      - "5004:5000"
+      - "8007:8000"
