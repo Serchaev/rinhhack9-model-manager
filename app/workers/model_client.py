@@ -1,22 +1,26 @@
 import asyncio
+import ipaddress
 import json
 import logging
-import ipaddress
 
 import joblib
+import pandas as pd
 from redis.asyncio.client import Redis
 
-import pandas as pd
-
-from app.config import settings, get_logger
+from app.config import get_logger, settings
 
 
 class ModelClient:
     def __init__(self, redis: Redis):
         self.redis = redis
         self.logger = get_logger(__name__)
-        self.model = joblib.load("config/gradient_boosting_model-0,9899.pkl")
+        self.model = joblib.load("config/model.pkl")
         self.logger.info("Модель загружена успешно!")
+
+    async def router_inference(self, data) -> float:
+        df = pd.DataFrame([data])
+        df_preprocessed = self._preprocessing(df)
+        return self._processing(df_preprocessed)
 
     async def inference(self, data):
         try:

@@ -2,7 +2,6 @@ import json
 from typing import Any
 
 from app.container import Container
-
 from app.workers.model_client import ModelClient
 
 

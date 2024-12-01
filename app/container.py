@@ -1,9 +1,9 @@
-from app.helpers.container import providers
-from app.helpers.db import SessionManager
-from app.helpers.redis import RedisStreamAmqp, RedisQueueAmqp
 from redis.asyncio.client import Redis
 
 from app.config import settings
+from app.helpers.container import providers
+from app.helpers.db import SessionManager
+from app.helpers.redis import RedisQueueAmqp, RedisStreamAmqp
 from app.workers.model_client import ModelClient
 
 
